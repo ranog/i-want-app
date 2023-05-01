@@ -10,7 +10,7 @@
   },
   "profiles": {
     "IWantApp": {
-      "commandName": "Project",
+      "commandName": "IWantApp",
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
