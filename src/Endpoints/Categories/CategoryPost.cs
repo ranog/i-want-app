@@ -12,13 +12,12 @@ public class CategoryPost
     public static IResult Action(CategoryRequest categoryRequest, ApplicationDbContext context)
     {
         var category = new Category(categoryRequest.Name, "Test", "Test");
-        if (category.IsValid)
-        {
-            context.Categories.Add(category);
-            context.SaveChanges();
+        if (!category.IsValid) 
+            return Results.ValidationProblem(category.Notifications.ConvertToProblemDetails());
+        
+        context.Categories.Add(category);
+        context.SaveChanges();
             
-            return Results.Created($"{Template}/{category.Id}", category.Id);
-        }
-        return Results.ValidationProblem(category.Notifications.ConvertToProblemDetails());
+        return Results.Created($"{Template}/{category.Id}", category.Id);
     }
 }
