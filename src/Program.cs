@@ -7,15 +7,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSqlServer<ApplicationDbContext>(builder.Configuration["ConnectionString:IWantDb"]);
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
-    {
-        // these settings for the password should not be implemented in production
-        options.Password.RequireNonAlphanumeric = false;
-        options.Password.RequireDigit = false;
-        options.Password.RequireUppercase = false;
-        options.Password.RequiredLength = 3;
-        options.Password.RequireLowercase = false;
-    })
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+{
+    // these settings for the password should not be implemented in production
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireDigit = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequiredLength = 3;
+    options.Password.RequireLowercase = false;
+}).AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
