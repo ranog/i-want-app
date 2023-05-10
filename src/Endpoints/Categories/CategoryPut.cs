@@ -1,9 +1,3 @@
-using System.Security.Claims;
-using IWantApp.Domain.Products;
-using IWantApp.Infra.Data;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-
 namespace IWantApp.Endpoints.Categories;
 
 public class CategoryPut

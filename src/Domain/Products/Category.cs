@@ -1,6 +1,3 @@
-using Flunt.Validations;
-using HostingEnvironmentExtensions = Microsoft.AspNetCore.Hosting.HostingEnvironmentExtensions;
-
 namespace IWantApp.Domain.Products;
 
 public class Category : Entity
