@@ -10,10 +10,11 @@ public class EmployeeGetAll
     public static Delegate Handle => Action;
 
     [Authorize(Policy = "Employee005Policy")]
-    public static IResult Action(int? page, int? rows, QueryAllUsersWithClaimName query)
+    public static async Task<IResult> Action(int? page, int? rows, QueryAllUsersWithClaimName query)
     {
-        if (page != null && rows != null)
-            return Results.Ok(query.Execute(page.Value, rows.Value));
-        return Results.BadRequest($"Value of page = '{page}' or rows = '{rows}' is empty.");
+        if (page == null || rows == null)
+            return Results.BadRequest($"Value of page = '{page}' or rows = '{rows}' is empty.");
+        var result = await query.Execute(page.Value, rows.Value);
+        return Results.Ok(result);
     }
 }
