@@ -9,6 +9,7 @@ public class Category : Entity
     {
         Name = name;
         Active = true;
+
         CreatedBy = createdBy;
         CreatedOn = DateTime.Now;
         EditedBy = editedBy;
@@ -29,8 +30,9 @@ public class Category : Entity
 
     public void EditInfo(string name, bool active, string editedBy)
     {
-        Active = active;
         Name = name;
+        Active = active;
+
         EditedBy = editedBy;
         EditedOn = DateTime.Now;
 
