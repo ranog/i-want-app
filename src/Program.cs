@@ -1,3 +1,4 @@
+using System.Text.Json;
 using IWantApp.Endpoints.Products;
 using Serilog;
 using Serilog.Sinks.MSSqlServer;
@@ -92,13 +93,13 @@ app.UseExceptionHandler("/error");
 app.Map("/error", (HttpContext http) =>
 {
     var error = http.Features.Get<IExceptionHandlerFeature>()?.Error.InnerException;
-    switch (error)
+    return error switch
     {
-        case SqlException:
-            return Results.Problem(title: "Database out", statusCode: 500);
-        default:
-            return Results.Problem(title: "An error occurred", statusCode: 500);
-    }
+        SqlException => Results.Problem(title: "Database out.", statusCode: 500),
+        JsonException => Results.Problem(title: "Error to convert data to other type. See all the information sent.",
+            statusCode: 500),
+        _ => Results.Problem(title: "An error occurred.", statusCode: 500)
+    };
 });
 
 app.Run();
