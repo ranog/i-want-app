@@ -22,7 +22,10 @@
         <Using Include="Microsoft.AspNetCore.Mvc"/>
         <Using Include="Microsoft.Data.SqlClient"/>
         <Using Include="Microsoft.AspNetCore.Diagnostics"/>
+        <Using Include="System.Text.Json"/>
 
+        <Using Include="IWantApp.Endpoints.Clients"/>
+        <Using Include="IWantApp.Endpoints.Products"/>
         <Using Include="IWantApp.Domain"/>
         <Using Include="IWantApp.Domain.Products"/>
         <Using Include="IWantApp.Infra.Data"/>

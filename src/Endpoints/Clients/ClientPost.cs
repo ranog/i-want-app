@@ -1,29 +1,27 @@
-namespace IWantApp.Endpoints.Employees;
+namespace IWantApp.Endpoints.Clients;
 
-public class EmployeePost
+public class ClientPost
 {
-    public static string Template => "/employees";
+    public static string Template => "/clients";
     public static string[] Methods => new string[] { HttpMethod.Post.ToString() };
     public static Delegate Handle => Action;
 
-    [Authorize(Policy = "EmployeePolicy")]
+    [AllowAnonymous]
     public static async Task<IResult> Action(
-        EmployeeRequest employeeRequest,
+        ClientRequest clientRequest,
         HttpContext http,
         UserManager<IdentityUser> userManager)
     {
-        var userId = http.User.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value;
-        var newUser = new IdentityUser { UserName = employeeRequest.Email, Email = employeeRequest.Email };
-        var result = await userManager.CreateAsync(newUser, employeeRequest.Password);
+        var newUser = new IdentityUser { UserName = clientRequest.Email, Email = clientRequest.Email };
+        var result = await userManager.CreateAsync(newUser, clientRequest.Password);
 
         if (!result.Succeeded)
             return Results.ValidationProblem(result.Errors.ConvertToProblemDetails());
 
         var userClaims = new List<Claim>
         {
-            new Claim("EmployeeCode", employeeRequest.EmployeeCode),
-            new Claim("Name", employeeRequest.Name),
-            new Claim("CreatedBy", userId),
+            new Claim("Cpf", clientRequest.Cpf),
+            new Claim("Name", clientRequest.Name),
         };
 
         var claimResult = await userManager.AddClaimsAsync(newUser, userClaims);
