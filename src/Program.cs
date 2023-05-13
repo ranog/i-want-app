@@ -79,6 +79,7 @@ app.UseHttpsRedirection();
 app.MapMethods(ProductPost.Template, ProductPost.Methods, ProductPost.Handle);
 app.MapMethods(ProductGetAll.Template, ProductGetAll.Methods, ProductGetAll.Handle);
 app.MapMethods(ProductGet.Template, ProductGet.Methods, ProductGet.Handle);
+app.MapMethods(ProductGetShowcase.Template, ProductGetShowcase.Methods, ProductGetShowcase.Handle);
 
 app.MapMethods(CategoryPost.Template, CategoryPost.Methods, CategoryPost.Handle);
 app.MapMethods(CategoryGetAll.Template, CategoryGetAll.Methods, CategoryGetAll.Handle);
@@ -96,8 +97,8 @@ app.Map("/error", (HttpContext http) =>
     return error switch
     {
         SqlException => Results.Problem(title: "Database out.", statusCode: 500),
-        JsonException => Results.Problem(title: "Error to convert data to other type. See all the information sent.",
-            statusCode: 500),
+        JsonException => Results
+            .Problem(title: "Error to convert data to other type. See all the information sent.", statusCode: 500),
         _ => Results.Problem(title: "An error occurred.", statusCode: 500)
     };
 });
