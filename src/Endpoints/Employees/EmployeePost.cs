@@ -10,15 +10,9 @@ public class EmployeePost
     public static async Task<IResult> Action(
         EmployeeRequest employeeRequest,
         HttpContext http,
-        UserManager<IdentityUser> userManager)
+        CreateUser createUser)
     {
         var userId = http.User.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value;
-        var newUser = new IdentityUser { UserName = employeeRequest.Email, Email = employeeRequest.Email };
-        var result = await userManager.CreateAsync(newUser, employeeRequest.Password);
-
-        if (!result.Succeeded)
-            return Results.ValidationProblem(result.Errors.ConvertToProblemDetails());
-
         var userClaims = new List<Claim>
         {
             new Claim("EmployeeCode", employeeRequest.EmployeeCode),
@@ -26,10 +20,11 @@ public class EmployeePost
             new Claim("CreatedBy", userId),
         };
 
-        var claimResult = await userManager.AddClaimsAsync(newUser, userClaims);
+        (IdentityResult identity, string userId) result =
+            await createUser.Create(employeeRequest.Email, employeeRequest.Password, userClaims);
 
-        return claimResult.Succeeded
-            ? Results.Created($"{Template}/{newUser.Id}", newUser.Id)
-            : Results.BadRequest(result.Errors.First());
+        return result.identity.Succeeded
+            ? Results.Created($"{Template}/{result.userId}", result.userId)
+            : Results.ValidationProblem(result.identity.Errors.ConvertToProblemDetails());
     }
 }
