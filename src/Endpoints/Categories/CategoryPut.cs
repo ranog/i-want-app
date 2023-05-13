@@ -8,7 +8,10 @@ public class CategoryPut
 
     [Authorize(Policy = "EmployeePolicy")]
     public static IResult Action(
-        [FromRoute] Guid id, CategoryRequest categoryRequest, HttpContext http, ApplicationDbContext context)
+        [FromRoute] Guid id,
+        CategoryRequest categoryRequest,
+        HttpContext http,
+        ApplicationDbContext context)
     {
         var userId = http.User.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value;
         var category = context.Categories.FirstOrDefault(c => c.Id == id);
