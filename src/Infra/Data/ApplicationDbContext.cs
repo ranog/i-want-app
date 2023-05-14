@@ -13,6 +13,7 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
+
         builder.Ignore<Notification>();
 
         builder.Entity<Product>().Property(p => p.Name).IsRequired();
@@ -22,7 +23,7 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
         builder.Entity<Category>().Property(c => c.Name).IsRequired();
 
         builder.Entity<Order>().Property(o => o.ClientId).IsRequired();
-        builder.Entity<Order>().Property(o => o.DeliveryAddres).IsRequired();
+        builder.Entity<Order>().Property(o => o.DeliveryAddress).IsRequired();
         builder.Entity<Order>()
             .HasMany(o => o.Products)
             .WithMany(p => p.Orders)

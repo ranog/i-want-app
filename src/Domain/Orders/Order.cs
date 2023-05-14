@@ -5,17 +5,17 @@ public class Order : Entity
     public string ClientId { get; private set; }
     public List<Product> Products { get; private set; }
     public decimal Total { get; private set; }
-    public string DeliveryAddres { get; private set; }
+    public string DeliveryAddress { get; private set; }
 
     private Order()
     {
     }
 
-    public Order(string clientId, string clientName, List<Product> products, string deliveryAddres)
+    public Order(string clientId, string clientName, List<Product> products, string deliveryAddress)
     {
         ClientId = clientId;
         Products = products;
-        DeliveryAddres = deliveryAddres;
+        DeliveryAddress = deliveryAddress;
         CreatedBy = clientName;
         EditedBy = clientName;
         CreatedOn = DateTime.UtcNow;
@@ -32,7 +32,10 @@ public class Order : Entity
 
     private void Validate()
     {
-        var contract = new Contract<Order>().IsNotNull(ClientId, "Client").IsNotNull(Products, "Products");
+        var contract = new Contract<Order>()
+            .IsNotNull(ClientId, "Client")
+            .IsTrue(Products.Any(), "Products")
+            .IsNotNullOrEmpty(DeliveryAddress, "DeliveryAddress");
         AddNotifications(contract);
     }
 }

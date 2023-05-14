@@ -18,7 +18,7 @@ namespace IWantApp.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ClientId = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Total = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    DeliveryAddres = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    DeliveryAddress = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EditedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),

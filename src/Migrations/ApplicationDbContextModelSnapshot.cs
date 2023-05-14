@@ -41,7 +41,7 @@ namespace IWantApp.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("DeliveryAddres")
+                    b.Property<string>("DeliveryAddress")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
