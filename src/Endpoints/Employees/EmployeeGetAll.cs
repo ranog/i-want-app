@@ -1,5 +1,6 @@
 namespace IWantApp.Endpoints.Employees;
 
+[Authorize(Policy = "EmployeePolicy")]
 public class EmployeeGetAll
 {
     public static string Template => "/employees";
