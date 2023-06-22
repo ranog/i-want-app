@@ -8,48 +8,52 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Using Include="Dapper"/>
-        <Using Include="Flunt.Notifications"/>
-        <Using Include="Flunt.Validations"/>
-        <Using Include="Microsoft.AspNetCore.Identity"/>
-        <Using Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore"/>
-        <Using Include="Microsoft.EntityFrameworkCore"/>
-        <Using Include="Microsoft.AspNetCore.Authorization"/>
-        <Using Include="System.Security.Claims"/>
-        <Using Include="System.Text"/>
-        <Using Include="Microsoft.AspNetCore.Authentication.JwtBearer"/>
-        <Using Include="Microsoft.IdentityModel.Tokens"/>
-        <Using Include="Microsoft.AspNetCore.Mvc"/>
-        <Using Include="Microsoft.Data.SqlClient"/>
-        <Using Include="Microsoft.AspNetCore.Diagnostics"/>
-        <Using Include="System.Text.Json"/>
+        <Using Include="Dapper" />
+        <Using Include="Flunt.Notifications" />
+        <Using Include="Flunt.Validations" />
+        <Using Include="Microsoft.AspNetCore.Identity" />
+        <Using Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+        <Using Include="Microsoft.EntityFrameworkCore" />
+        <Using Include="Microsoft.AspNetCore.Authorization" />
+        <Using Include="System.Security.Claims" />
+        <Using Include="System.Text" />
+        <Using Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+        <Using Include="Microsoft.IdentityModel.Tokens" />
+        <Using Include="Microsoft.AspNetCore.Mvc" />
+        <Using Include="Microsoft.Data.SqlClient" />
+        <Using Include="Microsoft.AspNetCore.Diagnostics" />
+        <Using Include="System.Text.Json" />
 
-        <Using Include="IWantApp.Domain.Orders"/>
-        <Using Include="IWantApp.Domain.Users"/>
-        <Using Include="IWantApp.Endpoints.Clients"/>
-        <Using Include="IWantApp.Endpoints.Products"/>
-        <Using Include="IWantApp.Domain"/>
-        <Using Include="IWantApp.Domain.Products"/>
-        <Using Include="IWantApp.Infra.Data"/>
-        <Using Include="IWantApp.Endpoints.Categories"/>
-        <Using Include="IWantApp.Endpoints.Employees"/>
-        <Using Include="IWantApp.Endpoints.Security"/>
+        <Using Include="IWantApp.Domain.Orders" />
+        <Using Include="IWantApp.Domain.Users" />
+        <Using Include="IWantApp.Endpoints.Clients" />
+        <Using Include="IWantApp.Endpoints.Products" />
+        <Using Include="IWantApp.Domain" />
+        <Using Include="IWantApp.Domain.Products" />
+        <Using Include="IWantApp.Infra.Data" />
+        <Using Include="IWantApp.Endpoints.Categories" />
+        <Using Include="IWantApp.Endpoints.Employees" />
+        <Using Include="IWantApp.Endpoints.Security" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Dapper" Version="2.0.123"/>
-        <PackageReference Include="Flunt" Version="2.0.5"/>
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0"/>
-        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.0"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5"/>
+        <PackageReference Include="Dapper" Version="2.0.123" />
+        <PackageReference Include="Flunt" Version="2.0.5" />
+        <PackageReference Include="format-hook" Version="1.0.2">
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5"/>
-        <PackageReference Include="Serilog.AspNetCore" Version="7.0.0"/>
-        <PackageReference Include="Serilog.Sinks.MSSqlServer" Version="6.3.0"/>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
+        <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
+        <PackageReference Include="Serilog.Sinks.MSSqlServer" Version="6.3.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     </ItemGroup>
 
 </Project>
