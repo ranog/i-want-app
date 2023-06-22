@@ -11,3 +11,4 @@ repos:
         language: system
         entry: dotnet format --include
         types_or: [ "c#", "vb" ]
+
